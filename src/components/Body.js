@@ -12,12 +12,14 @@ function Body({ spotify }) {
   const [{ discover_weekly }, dispatch] = useStateValue();
 
   const playSong = (id) => {
+    
     spotify
       .play({
         uris: [`spotify:track:${id}`],
       })
       .then((res) => {
         spotify.getMyCurrentPlayingTrack().then((r) => {
+          
           dispatch({
             type: "SET_ITEM",
             item: r.item,
